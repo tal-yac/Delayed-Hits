@@ -73,8 +73,7 @@ public:
      * @return The written CacheEntry instance.
      */
     virtual CacheEntry
-    write(const std::string& key, const utils::Packet& packet) override {
-        SUPPRESS_UNUSED_WARNING(packet);
+    write(const std::string& key,[[maybe_unused]] const utils::Packet& packet) override {
         CacheEntry written_entry;
         CacheEntry evicted_entry;
 
@@ -211,12 +210,9 @@ public:
 class ARCCache : public BaseCache {
 public:
     ARCCache(const size_t miss_latency, const size_t cache_set_associativity, const size_t
-             num_cache_sets, const bool penalize_insertions, const HashType hash_type, int
-             argc, char** argv) : BaseCache(miss_latency, cache_set_associativity,
+             num_cache_sets, const bool penalize_insertions, const HashType hash_type,[[maybe_unused]] int
+             argc,[[maybe_unused]] char** argv) : BaseCache(miss_latency, cache_set_associativity,
              num_cache_sets, penalize_insertions, hash_type) {
-        SUPPRESS_UNUSED_WARNING(argc);
-        SUPPRESS_UNUSED_WARNING(argv);
-
         // Initialize the cache sets
         for (size_t idx = 0; idx < kMaxNumCacheSets; idx++) {
             cache_sets_.push_back(new ARCCacheSet(kCacheSetAssociativity));

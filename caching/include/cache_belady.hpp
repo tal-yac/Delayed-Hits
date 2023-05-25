@@ -43,8 +43,7 @@ public:
      * @return The written CacheEntry instance.
      */
     virtual CacheEntry
-    write(const std::string& key, const utils::Packet& packet) override {
-        SUPPRESS_UNUSED_WARNING(packet);
+    write(const std::string& key,[[maybe_unused]] const utils::Packet& packet) override {
         CacheEntry written_entry;
 
         // If a corresponding entry exists, update it

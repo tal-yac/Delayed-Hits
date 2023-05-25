@@ -199,12 +199,9 @@ private:
 public:
     LHDCache(const size_t miss_latency, const size_t cache_set_associativity,
              const size_t num_cache_sets, const bool penalize_insertions,
-             const HashType hash_type, int argc, char** argv) : BaseCache(
+             const HashType hash_type,[[maybe_unused]] int argc,[[maybe_unused]] char** argv) : BaseCache(
              miss_latency, cache_set_associativity, num_cache_sets,
              penalize_insertions, hash_type), rand(12345) {
-        SUPPRESS_UNUSED_WARNING(argc);
-        SUPPRESS_UNUSED_WARNING(argv);
-
         next_reconfiguration_ = kAccessesPerReconfiguration;
         for (size_t i = 0; i < kNumClassesTotal; i++) {
             classes_.push_back(ClassMetadata());

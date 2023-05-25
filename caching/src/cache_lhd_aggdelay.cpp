@@ -61,8 +61,7 @@ struct FlowState {
     /**
      * Returns the average AggregateDelay cost for this flow.
      */
-    double getAverageAggregateDelay(const size_t z) const {
-        SUPPRESS_UNUSED_WARNING(z);
+    double getAverageAggregateDelay([[maybe_unused]] const size_t z) const {
         if (num_windows_ == 1) { return current_aggdelay_; }
         return static_cast<double>(past_cumulative_aggdelay_) / (num_windows_ - 1);
     }
@@ -234,12 +233,9 @@ private:
 public:
     LHDAggregateDelayCache(const size_t miss_latency, const size_t cache_set_associativity,
                            const size_t num_cache_sets, const bool penalize_insertions,
-                           const HashType hash_type, int argc, char** argv) : BaseCache(
+                           const HashType hash_type,[[maybe_unused]] int argc,[[maybe_unused]] char** argv) : BaseCache(
                            miss_latency, cache_set_associativity, num_cache_sets,
                            penalize_insertions, hash_type), rand(12345) {
-        SUPPRESS_UNUSED_WARNING(argc);
-        SUPPRESS_UNUSED_WARNING(argv);
-
         next_reconfiguration_ = kAccessesPerReconfiguration;
         for (size_t i = 0; i < kNumClassesTotal; i++) {
             classes_.push_back(ClassMetadata());

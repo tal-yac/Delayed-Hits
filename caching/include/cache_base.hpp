@@ -46,8 +46,8 @@ public:
     /**
      * Records arrival of a new packet.
      */
-    virtual void recordPacketArrival(const utils::Packet& packet) {
-        SUPPRESS_UNUSED_WARNING(packet);
+    virtual void recordPacketArrival([[maybe_unused]] const utils::Packet& packet) {
+ 
     }
 
     /**
@@ -124,9 +124,7 @@ public:
     /**
      * Records arrival of a new packet.
      */
-    virtual void recordPacketArrival(const utils::Packet& packet) {
-        SUPPRESS_UNUSED_WARNING(packet);
-    }
+    virtual void recordPacketArrival([[maybe_unused]] const utils::Packet& packet) {}
 
     /**
      * Returns the cache miss latency.

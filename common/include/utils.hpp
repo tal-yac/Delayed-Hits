@@ -14,9 +14,6 @@
 // Boost headers
 #include <boost/functional/hash.hpp>
 
-// Macros
-#define SUPPRESS_UNUSED_WARNING(a) ((void) a)
-
 namespace utils {
 
 // Helper functions
