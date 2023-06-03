@@ -5,4 +5,5 @@ build/
 tags
 *.so
 
+.cache/
 .history/
