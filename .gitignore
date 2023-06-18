@@ -4,7 +4,7 @@ __pycache__/
 build/
 tags
 *.so
-caida*
 
+my-traces
 .cache/
 .history/
